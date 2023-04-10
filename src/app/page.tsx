@@ -1,8 +1,9 @@
 'use client'
+import ThreeDCelestialBody from '@/components/3d-celestial-body'
 export default function Home() {
   return (
     <>
-      <div className="flex-1 m-5 relative">hello world</div>
+      <ThreeDCelestialBody />
     </>
   )
 }
