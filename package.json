@@ -62,7 +62,8 @@
     "stylelint-config-standard-vue": "^1.0.0",
     "stylelint-less": "^1.0.6",
     "stylelint-order": "^6.0.2",
-    "tailwindcss": "^3.2.7"
+    "tailwindcss": "^3.2.7",
+    "webpack-obj-loader": "^1.0.4"
   },
   "lint-staged": {
     "src/**/*.{scss,less,css}": [
