@@ -11,6 +11,14 @@ declare module '*.svg' {
   const src: string
   export default src
 }
+declare module '*.mtl' {
+  const mtl: any
+  export default mtl
+}
+declare module '*.obj' {
+  const obj: any
+  export default obj
+}
 // declare module '@douyinfe/semi-icons' {
 //   // import SemiIcons = require('@douyinfe/semi-icons')
 //   export * from '@douyinfe/semi-icons'
