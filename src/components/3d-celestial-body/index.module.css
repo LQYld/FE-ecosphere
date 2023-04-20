@@ -1,4 +1,54 @@
 .container{
+  position: relative;
   width: 100vw;
   height: 100vh;
+}
+
+.main{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 3;
+  margin: auto;
+  width: 70%;
+}
+
+.header{
+  width: 555px;
+  font-size: 45px;
+  font-family: var(--cp-font-family-header);
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.1;
+}
+
+.message{
+  width: 555px;
+  font-size: 18px;
+  color: var(--cp-color-6);
+  color: white;
+}
+
+.body-bgc{
+  position: absolute;
+  top:-440px;
+  right: -900px;
+  z-index: 1;
+  max-width: calc(230vw + 1670px);
+  pointer-events: none;
+}
+
+.earth{
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
+
+.green-line-svg{
+  position: absolute;
+  bottom: -80px;
+  left: -120px;
+  width: 500px;
 }

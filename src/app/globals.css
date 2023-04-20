@@ -9,9 +9,25 @@
   margin: 0;
  }
 
+:root{
+  --cp-color-17-hsl: 225deg 9.5238% 8.2353%;
+  --cp-color-17: hsl(var(--cp-color-17-hsl));
+  --cp-color-6-hsl: 230deg 12% 80.3922%;
+  --cp-color-6: hsl(var(--cp-color-6-hsl));
+  --cp-font-family-header: 'Telefon Black', sans-serif;
+  --card-height: 180px;
+  --card-width: 101px;
+}
+
+@font-face {
+  font-family: "Telefon Black";
+  src: url('../../public//telefon-black.woff') format("woff");
+}
+
 body{
   display: flex;
   overflow: hidden;
   width: 100vw;
   height: 100vh;
+  background-color: var(--cp-color-17);
 }
