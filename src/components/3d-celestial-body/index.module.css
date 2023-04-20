@@ -45,3 +45,10 @@
   right: 0;
   z-index: 1;
 }
+
+.green-line-svg{
+  position: absolute;
+  bottom: -80px;
+  left: -120px;
+  width: 500px;
+}

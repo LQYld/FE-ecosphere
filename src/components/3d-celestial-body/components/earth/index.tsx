@@ -9,20 +9,18 @@ import styles from './index.module.css'
 import { useEffect, useRef } from 'react'
 export default function EarthComponents() {
   const threeDom = useRef(null)
-  // const renderNumber = useRef(0)
   useEffect(() => {
     const threeDomChild = threeDom.current
     for (let i = 0; i < threeDomChild.children.length; i++) {
       const element = threeDomChild.children[i]
-      element.remove() // threeDomChild.removeChild(element);
+      element.remove()
     }
-    let camera, scene, renderer
+    let camera, scene, renderer, gltfClass
     init()
-    render()
     function init() {
       const container = threeDom.current
-      camera = new THREE.PerspectiveCamera(50, 1, 1, 1000)
-      camera.position.set(50, 0, 50)
+      camera = new THREE.PerspectiveCamera(40, 1, 1, 700)
+      // camera.position.set(50, 0, 50)
       scene = new THREE.Scene()
 
       renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
@@ -51,42 +49,35 @@ export default function EarthComponents() {
 
         // scene.background = texture
         scene.environment = texture
-
-        render()
         const loader = new GLTFLoader()
         loader.load(gltfFile, function (gltf) {
-          scene.add(gltf.scene)
-          gltf.scene.children[0].position.x = -50
-          gltf.scene.children[0].position.y = -120
-          gltf.scene.children[0].position.z = 20
-          camera.lookAt(gltf.scene.children[0].position)
+          gltfClass = gltf
+          scene.add(gltfClass.scene)
+          gltfClass.scene.children[0].position.x = 0
+          gltfClass.scene.children[0].position.y = -120
+          gltfClass.scene.children[0].position.z = -20
+
+          camera.position.x = 150
+          // camera.position.y = 0
+          camera.position.z = 50
+          camera.lookAt(gltfClass.scene.children[0].position)
           // 注意相机控件参数同步
           // controls.target.copy(gltf.scene.children[0].position)
+          console.log(camera.position)
           render()
         })
       })
     }
 
-    // function onWindowResize() {
-    //   camera.aspect = 1
-    //   camera.updateProjectionMatrix()
-
-    //   renderer.setSize(700, 700)
-
-    //   render()
-    // }
-
-    //
-
     function render() {
       renderer.render(scene, camera)
+      gltfClass.scene.children[0].rotation.z -= 0.01
+      requestAnimationFrame(render)
     }
   }, [])
   return (
     <div className="relative">
-      <div className={styles.container} ref={threeDom}>
-        {/* <img src={earthBgcUrl.src} /> */}
-      </div>
+      <div className={styles.container} ref={threeDom}></div>
       <img src={astrocatImgUrl.src} className={`${styles.people}`} />
     </div>
   )

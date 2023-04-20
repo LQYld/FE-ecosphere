@@ -1,7 +1,7 @@
-import { useEffect, useRef } from 'react'
 import CardComponents from './components/card'
 import EarthComponents from './components/earth'
 import bodyBgcUrl from '../../../public/hero-bg.webp'
+import greenLineSvg from '../../../public/greenLine.svg'
 
 import styles from './index.module.css'
 export default function ThreeDCelestialBody() {
@@ -22,8 +22,11 @@ export default function ThreeDCelestialBody() {
             inspiration.
           </p>
         </div>
-        <div className="pt-28">
-          <CardComponents />
+        <div className="pt-24 relative">
+          <div className="relative z-10">
+            <CardComponents />
+          </div>
+          <img src={greenLineSvg.src} className={styles['green-line-svg']} />
         </div>
       </div>
       <div className={`${styles.earth} top-32`}>
