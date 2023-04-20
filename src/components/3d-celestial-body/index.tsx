@@ -11,15 +11,16 @@ export default function ThreeDCelestialBody() {
       <div className={styles.main}>
         <div className="pt-32">
           <h1 className={styles.header}>
-            The best place to build, test,and discover front-end code.front-end
-            code.
+            FE-ecosphere
+            <br />
+            An ecosystem dedicated to front-end developers.
           </h1>
           <br />
           <p className={styles.message}>
-            CodePen is a <strong>social development environment</strong> for
-            front-end designers and developers. Build and deploy a website, show
-            off your work, build test cases to learn and debug, and find
-            inspiration.
+            Full name: <strong>front-end ecosystem </strong>.The ecosystem
+            includes aggregated search, aggregated translation, commonly used
+            conversion tools, leisure and entertainment, as well as my personal
+            profile and notes.
           </p>
         </div>
         <div className="pt-24 relative">
