@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader'
+// import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
 import hdrFile from '../../../../../public/royal_esplanade_1k.hdr'
 import gltfFile from '../../../../../public/scene.gltf'
 import astrocatImgUrl from '../../../../../public/astrocat.png'
