@@ -10,8 +10,23 @@ const nextConfig = {
   ],
   webpack: (config) => {
     config.module.rules.push({
-      test: /\.(gltf|bin|glb)$/i,
-      loader: 'url-loader'
+      test: /\.(gltf|hdr)$/,
+      use: {
+        loader: 'file-loader',
+        options: {
+          outputPath: 'static/3dModal/'
+        }
+      }
+    })
+    config.module.rules.push({
+      test: /\.(bin)$/,
+      use: {
+        loader: 'file-loader',
+        options: {
+          outputPath: 'static/3dModal/',
+          name: '[name].[ext]' // keep the original name
+        }
+      }
     })
     return config
   }

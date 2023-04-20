@@ -23,3 +23,7 @@ declare module '*.glb' {
   const glb: any
   export default glb
 }
+declare module '*.hdr' {
+  const hdr: any
+  export default hdr
+}

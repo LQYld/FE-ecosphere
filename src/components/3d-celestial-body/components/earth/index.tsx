@@ -1,64 +1,80 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
-// import draco from 'three/examples/jsm/libs/draco/gltf'
-// import earthBgcUrl from '../../../../../public/globe.jpg'
-import gltfFile from '../../../../../public/scene.glb'
-// import binFile from '../../../../../public/scene.bin'
+import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader'
+import hdrFile from '../../../../../public/royal_esplanade_1k.hdr'
+import gltfFile from '../../../../../public/scene.gltf'
+import astrocatImgUrl from '../../../../../public/astrocat.png'
+import '../../../../../public/scene.bin'
 import styles from './index.module.css'
 import { useEffect, useRef } from 'react'
 export default function EarthComponents() {
   const threeDom = useRef(null)
+  // const renderNumber = useRef(0)
   useEffect(() => {
+    const threeDomChild = threeDom.current
+    for (let i = 0; i < threeDomChild.children.length; i++) {
+      const element = threeDomChild.children[i]
+      element.remove() // threeDomChild.removeChild(element);
+    }
     let camera, scene, renderer
     init()
     render()
     function init() {
-      const container = document.createElement('div')
-      threeDom.current.appendChild(container)
-      camera = new THREE.PerspectiveCamera(45, 1, 0.25, 20)
-      camera.position.set(-1.8, 0.6, 2.7)
-
+      const container = threeDom.current
+      camera = new THREE.PerspectiveCamera(50, 1, 1, 1000)
+      camera.position.set(50, 0, 50)
       scene = new THREE.Scene()
 
-      const dracoLoader = new DRACOLoader()
-      dracoLoader.setDecoderPath('/public/')
-      const loader = new GLTFLoader()
-      loader.setDRACOLoader(dracoLoader)
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
 
-      loader.load(gltfFile, function (gltf) {
-        scene.add(gltf.scene)
-
-        render()
-      })
-
-      renderer = new THREE.WebGLRenderer({ antialias: true })
+      // scene.background = new THREE.Color(0xbbbbbb)
+      // 设置渲染区域尺寸，本质就是设置输出canvas的尺寸
+      renderer.setSize(700, 700)
       renderer.setPixelRatio(window.devicePixelRatio)
-      renderer.setSize(window.innerWidth, window.innerHeight)
+      renderer.setSize(700, 700)
       renderer.toneMapping = THREE.ACESFilmicToneMapping
       renderer.toneMappingExposure = 1
       renderer.outputEncoding = THREE.sRGBEncoding
       container.appendChild(renderer.domElement)
 
-      const controls = new OrbitControls(camera, renderer.domElement)
-      controls.addEventListener('change', render) // use if there is no animation loop
-      controls.minDistance = 2
-      controls.maxDistance = 10
-      controls.target.set(0, 0, -0.2)
-      controls.update()
+      // const controls = new OrbitControls(camera, renderer.domElement)
+      // controls.addEventListener('change', render) // use if there is no animation loop
+      // controls.minDistance = 2
+      // controls.maxDistance = 1000
+      // // controls.target.set(0, 0, -0.2)
+      // controls.update()
 
-      window.addEventListener('resize', onWindowResize)
+      // window.addEventListener('resize', onWindowResize)
+
+      new RGBELoader().load(hdrFile, function (texture) {
+        texture.mapping = THREE.EquirectangularReflectionMapping
+
+        // scene.background = texture
+        scene.environment = texture
+
+        render()
+        const loader = new GLTFLoader()
+        loader.load(gltfFile, function (gltf) {
+          scene.add(gltf.scene)
+          gltf.scene.children[0].position.x = -50
+          gltf.scene.children[0].position.y = -120
+          gltf.scene.children[0].position.z = 20
+          camera.lookAt(gltf.scene.children[0].position)
+          // 注意相机控件参数同步
+          // controls.target.copy(gltf.scene.children[0].position)
+          render()
+        })
+      })
     }
 
-    function onWindowResize() {
-      camera.aspect = window.innerWidth / window.innerHeight
-      camera.updateProjectionMatrix()
+    // function onWindowResize() {
+    //   camera.aspect = 1
+    //   camera.updateProjectionMatrix()
 
-      renderer.setSize(window.innerWidth, window.innerHeight)
+    //   renderer.setSize(700, 700)
 
-      render()
-    }
+    //   render()
+    // }
 
     //
 
@@ -67,8 +83,11 @@ export default function EarthComponents() {
     }
   }, [])
   return (
-    <div className={styles.container} ref={threeDom}>
-      {/* <img src={earthBgcUrl.src} /> */}
+    <div className="relative">
+      <div className={styles.container} ref={threeDom}>
+        {/* <img src={earthBgcUrl.src} /> */}
+      </div>
+      <img src={astrocatImgUrl.src} className={`${styles.people}`} />
     </div>
   )
 }

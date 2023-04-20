@@ -26,7 +26,7 @@ export default function ThreeDCelestialBody() {
           <CardComponents />
         </div>
       </div>
-      <div className={styles.earth}>
+      <div className={`${styles.earth} top-32`}>
         <EarthComponents />
       </div>
     </div>
