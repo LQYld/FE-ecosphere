@@ -10,6 +10,7 @@
   right: 0;
   left: 0;
   z-index: 3;
+  display: flex;
   margin: auto;
   width: 70%;
 }
@@ -41,8 +42,7 @@
 }
 
 .earth{
-  position: absolute;
-  right: 0;
+  position: relative;
   z-index: 1;
 }
 
