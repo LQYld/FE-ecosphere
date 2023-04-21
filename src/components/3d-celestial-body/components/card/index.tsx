@@ -23,7 +23,7 @@ const cardList = [
   {
     icon: browserImg,
     label: 'Introduce',
-    url: ''
+    url: 'http://biographical.fe-ecosphere.com/'
   },
   {
     icon: blogImg,
