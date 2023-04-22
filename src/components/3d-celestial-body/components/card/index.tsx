@@ -28,7 +28,7 @@ const cardList = [
   {
     icon: blogImg,
     label: 'Blog',
-    url: ''
+    url: 'http://blog.fe-ecosphere.com/'
   }
 ]
 export default function CardComponents() {
