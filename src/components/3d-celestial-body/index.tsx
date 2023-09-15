@@ -9,8 +9,9 @@ import aiSessionLogo from '../../../public/technical-support.png'
 import languageLogo from '../../../public/language.png'
 import { Toast, Collapse } from '@douyinfe/semi-ui'
 import vsCodeThemeDemo from '../../../public/demo/react-theme-demo.png'
+import chatSessionDemo from '../../../public/demo/chat-session.png'
 import styles from './index.module.css'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 
 const projectMap = [
   {
@@ -35,18 +36,32 @@ const projectMap = [
   }
 ]
 
+const ShowDemoDom = (url) => {
+  return <img key={url} src={url} className={styles['poster-show-demo-img']} />
+}
+
 const show_demo = [
   {
     name: 'Doli Theme',
     introduce:
       'vscode Doli Dark Theme is a stylish, modern theme designed to increase development efficiency. It uses a dark background and bright text to make code more legible.',
     url: vsCodeThemeDemo.src,
-    key: 'vscode-theme'
+    key: 'vscode-theme',
+    dom: ShowDemoDom(vsCodeThemeDemo.src)
+  },
+  {
+    name: 'Chat Session',
+    introduce:
+      'vscode Doli Dark Theme is a stylish, modern theme designed to increase development efficiency. It uses a dark background and bright text to make code more legible.',
+    url: chatSessionDemo.src,
+    key: 'chat-session',
+    dom: ShowDemoDom(chatSessionDemo.src)
   }
 ]
 
 export default function ThreeDCelestialBody() {
-  const [currentShowDemo] = useState(show_demo[0])
+  const [currentShowDemo, setCurrentShowDemo] = useState(show_demo[0])
+  const [previousOne, setPreviousOne] = useState(show_demo[0])
 
   const pushWindow = (url: string) => {
     if (!url) {
@@ -57,6 +72,26 @@ export default function ThreeDCelestialBody() {
     }
     window.open(url)
   }
+
+  const collapseChange = (event: string) => {
+    const changeKey = event[0]
+    if (!changeKey || changeKey === currentShowDemo.key) return
+    const newCurrentShowDemo = show_demo.find((item) => item.key === event[0])
+    setPreviousOne(currentShowDemo)
+    setCurrentShowDemo(newCurrentShowDemo)
+  }
+
+  const previousOneDom = useMemo(() => {
+    return (
+      previousOne && (
+        <img
+          key={`copy_${previousOne.url}`}
+          src={previousOne.url}
+          className={styles['poster-show-demo-img-previous']}
+        />
+      )
+    )
+  }, [previousOne])
 
   return (
     <div className={styles.container}>
@@ -120,7 +155,11 @@ export default function ThreeDCelestialBody() {
         <img src={yellowLineSvg.src} className={styles['yellow-line-svg']} />
         <div className={styles.poster}>
           <div className={styles['poster-collapse']}>
-            <Collapse accordion defaultActiveKey={currentShowDemo.key}>
+            <Collapse
+              accordion
+              activeKey={currentShowDemo.key}
+              onChange={collapseChange}
+            >
               {show_demo.map((item, index) => {
                 return (
                   <Collapse.Panel
@@ -136,10 +175,10 @@ export default function ThreeDCelestialBody() {
           </div>
           <div className={`${styles['poster-show-demo']}`}>
             <div className={styles['poster-show-demo-img-box']}>
-              <img
-                src={currentShowDemo.url}
-                className={styles['poster-show-demo']}
-              />
+              <div className="relative">
+                {currentShowDemo.dom}
+                {previousOneDom}
+              </div>
             </div>
           </div>
         </div>

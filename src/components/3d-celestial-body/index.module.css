@@ -155,11 +155,48 @@
 
 .poster-show-demo-img-box{
   overflow: hidden;
+  height: 410.5px;
   border-radius: 4px;
 }
 
 .poster-show-demo-img{
-  width: 100%;
+  position: relative;
+  z-index: 3;
+  width: 660px;
+  animation: bottom 0.8s 0.3s both;
+}
+
+.poster-show-demo-img-previous{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 660px;
+  animation: bottom-pop 0.8s 0.3s both;
+}
+
+@keyframes bottom {
+  0%{
+    transform: translateY(100px);
+    opacity: 0;
+  }
+
+  100%{
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes bottom-pop {
+  0%{
+    opacity: 1;
+    transform: none;
+  }
+
+  100%{
+    transform: translateY(100px);
+    opacity: 0;
+  }
 }
 
 .footer{
