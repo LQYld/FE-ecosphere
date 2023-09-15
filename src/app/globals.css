@@ -10,13 +10,19 @@
  }
 
 :root{
-  --cp-color-17-hsl: 225deg 9.5238% 8.2353%;
-  --cp-color-17: hsl(var(--cp-color-17-hsl));
+  --cp-color-17-hsl: #0d1116;
+  --cp-color-17: var(--cp-color-17-hsl);
   --cp-color-6-hsl: 230deg 12% 80.3922%;
   --cp-color-6: hsl(var(--cp-color-6-hsl));
   --cp-font-family-header: 'Telefon Black', sans-serif;
+  --cp-font-family-header-alt: 'Telefon', sans-serif;
   --card-height: 180px;
   --card-width: 101px;
+  --cp-color-14-hsl: 222.86deg 13.73% 20%;
+  --cp-color-14: hsl(var(--cp-color-14-hsl));
+  --cp-color-12-hsl: 228deg 12.2% 40.2%;
+  --cp-color-12: hsl(var(--cp-color-12-hsl));
+  --cp-button-hover-bg: var(--cp-color-12);
 }
 
 @font-face {
@@ -27,7 +33,13 @@
 body{
   display: flex;
   overflow: hidden;
+  overflow-y: auto;
   width: 100vw;
   height: 100vh;
   background-color: var(--cp-color-17);
 }
+
+::-webkit-scrollbar {  
+  width: 0;     /* 宽度 */  
+  height: 0;    /* 高度 */  
+} 

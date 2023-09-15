@@ -11,6 +11,7 @@
   left: 0;
   z-index: 3;
   display: flex;
+  justify-content: center;
   margin: auto;
   width: 70%;
 }
@@ -51,4 +52,153 @@
   bottom: -80px;
   left: -120px;
   width: 500px;
+}
+
+.introduce{
+  position: relative;
+  top: 828px;
+  right: 0;
+  left: 0;
+  z-index: 3;
+  margin: auto;
+  width: 1000px;
+}
+
+.pink-line-svg{
+  position: absolute;
+  top: -20px;
+  right: -120px;
+  width: 350px;
+}
+
+.project-box{
+  position: relative;
+  z-index: 2;
+  padding: 22.5px 22.5px 30px;
+  margin: 30px 0;
+  width: 315px;
+  height: 253.398px;
+  background: var(--cp-color-14);
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgb(255 255 255 / 20%);
+}
+
+.project-box-icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -60px;
+  margin-bottom: 10px;
+  width: 75px;
+  height: 75px;
+  background: var(--cp-color-17);
+  border-radius: 10px;
+}
+
+.project-box-icon-img{
+  width: 50px;
+}
+
+.project-box-icon-name{
+  font-size: 22px;
+  font-family: var(--cp-font-family-header-alt);
+  font-weight: bold;
+  color: #fff;
+}
+
+.project-box-icon-introduce{
+  margin-top: 4px;
+  font-size: 14px;
+  color: var(--cp-color-6);
+}
+
+.project-box-icon-button{
+  position: absolute;
+  bottom: 20px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  color: rgb(255 255 255) !important;
+  background: rgb(68 72 87) !important;
+  border-radius: 4px;
+  text-shadow: none;
+  outline-offset: 3px;
+  cursor: pointer;
+}
+
+.project-box-icon-button:hover {
+  background: #5a5f73 !important;
+}
+
+.yellow-line-svg{
+  position: relative;
+  left: -150px;
+  margin-top: -40px;
+  width: 350px;
+}
+
+.poster{
+  display: flex;
+  margin-top: 20px;
+  width: 100%;
+  background: var(--cp-color-14);
+  border-radius: 10px;
+}
+
+.poster-collapse{
+  width: 30%;
+}
+
+.poster-show-demo{
+  flex: 1;
+  padding: 10px;
+}
+
+.poster-show-demo-img-box{
+  overflow: hidden;
+  height: 410.5px;
+  border-radius: 4px;
+}
+
+.poster-show-demo-img{
+  position: relative;
+  z-index: 3;
+  width: 660px;
+  animation: bottom 0.8s 0.3s both;
+}
+
+.poster-show-demo-img-previous{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 660px;
+  animation: bottom-pop 0.8s 0.3s both;
+}
+
+@keyframes bottom {
+  0%{
+    transform: translateY(100px);
+    opacity: 0;
+  }
+
+  100%{
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes bottom-pop {
+  0%{
+    opacity: 1;
+    transform: none;
+  }
+
+  100%{
+    transform: translateY(100px);
+    opacity: 0;
+  }
+}
+
+.footer{
+  height: 50px;
 }
