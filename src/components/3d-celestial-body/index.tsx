@@ -28,7 +28,7 @@ const projectMap = [
     name: 'Json conversion',
     url: '',
     introduce:
-      'Our software allows you to quickly and conveniently read, edit, and generate JSON data, making your data management more efficient. Come and try it out!'
+      'Our software allows you to edit, and generate JSON data, making your data management more efficient. Come and try it out!'
   },
   {
     logo: aiSessionLogo.src,
