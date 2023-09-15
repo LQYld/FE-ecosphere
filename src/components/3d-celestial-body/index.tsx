@@ -4,6 +4,7 @@ import bodyBgcUrl from '../../../public/hero-bg.webp'
 import greenLineSvg from '../../../public/greenLine.svg'
 import pinkLineSvg from '../../../public/pinkLine.svg'
 import yellowLineSvg from '../../../public/yellowLine.svg'
+import purpleLineSvg from '../../../public/purpleLIne.svg'
 import jsonLogo from '../../../public/json.png'
 import aiSessionLogo from '../../../public/technical-support.png'
 import languageLogo from '../../../public/language.png'
@@ -13,8 +14,9 @@ import chatSessionDemo from '../../../public/demo/chat-session.png'
 import blogDemo from '../../../public/demo/blog.png'
 import aggsearchDemo from '../../../public/demo/aggsearch.png'
 import biographicalDemo from '../../../public/demo/biographical.png'
+import peopleImg from '../../../public/people.png'
 import styles from './index.module.css'
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 
 const projectMap = [
   {
@@ -167,45 +169,54 @@ export default function ThreeDCelestialBody() {
         </div>
         <img src={yellowLineSvg.src} className={styles['yellow-line-svg']} />
         <div className={styles.poster}>
-          <div className={styles['poster-collapse']}>
-            <Collapse
-              accordion
-              activeKey={currentShowDemo.key}
-              onChange={collapseChange}
-            >
-              {show_demo.map((item, index) => {
-                return (
-                  <Collapse.Panel
-                    key={`poster_demo_${index}`}
-                    header={item.name}
-                    itemKey={item.key}
-                  >
-                    <p>{item.introduce}</p>
-                  </Collapse.Panel>
-                )
-              })}
-            </Collapse>
-          </div>
-          <div className={`${styles['poster-show-demo']}`}>
-            <div className={styles['poster-show-demo-img-box']}>
-              <div className="relative h-full">
+          <div className={styles['poster-box']}>
+            <div className={styles['poster-collapse']}>
+              <Collapse
+                accordion
+                activeKey={currentShowDemo.key}
+                onChange={collapseChange}
+              >
                 {show_demo.map((item, index) => {
                   return (
-                    <div
-                      key={`poster-show-demo-img_${index}`}
-                      className={
-                        item.key === currentShowDemo.key
-                          ? `${styles['poster-show-demo-img-div']} ${styles['poster-show-demo-img-current']}`
-                          : `${styles['poster-show-demo-img-previous']}`
-                      }
+                    <Collapse.Panel
+                      key={`poster_demo_${index}`}
+                      header={item.name}
+                      itemKey={item.key}
                     >
-                      {item.dom}
-                    </div>
+                      <p>{item.introduce}</p>
+                    </Collapse.Panel>
                   )
                 })}
+              </Collapse>
+            </div>
+            <div className={`${styles['poster-show-demo']}`}>
+              <div className={styles['poster-show-demo-img-box']}>
+                <div className="relative h-full">
+                  {show_demo.map((item, index) => {
+                    return (
+                      <div
+                        key={`poster-show-demo-img_${index}`}
+                        className={
+                          item.key === currentShowDemo.key
+                            ? `${styles['poster-show-demo-img-div']} ${styles['poster-show-demo-img-current']}`
+                            : `${styles['poster-show-demo-img-previous']}`
+                        }
+                      >
+                        {item.dom}
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
             </div>
           </div>
+          <img
+            src={purpleLineSvg.src}
+            className={`${styles['poster-purple-line']}`}
+          />
+        </div>
+        <div className={styles.people}>
+          <img src={peopleImg.src} className={styles['people-img']} />
         </div>
         <div className={styles['footer']} />
       </div>

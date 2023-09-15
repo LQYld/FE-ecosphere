@@ -138,8 +138,18 @@
 }
 
 .poster{
-  display: flex;
+  position: relative;
   margin-top: 20px;
+  width: 100%;
+  background: var(--cp-color-14);
+  border: 3px solid rgb(48 54 61);
+  border-radius: 10px
+}
+
+.poster-box{
+  position: relative;
+  z-index: 3;
+  display: flex;
   width: 100%;
   background: var(--cp-color-14);
   border: 3px solid rgb(48 54 61);
@@ -210,6 +220,25 @@
   }
 }
 
+.poster-purple-line{
+  position: absolute;
+  right: -150px;
+  bottom: -65px;
+  z-index: 1;
+  width: 350px;
+}
+
 .footer{
-  height: 50px;
+  height: 10px;
+}
+
+.people{
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  width: 100%;
+}
+
+.people-img{
+  width: 700px;
 }
