@@ -79,6 +79,7 @@
   width: 315px;
   height: 253.398px;
   background: var(--cp-color-14);
+  border: 3px solid rgb(48 54 61);
   border-radius: 10px;
   box-shadow: 0 5px 20px rgb(255 255 255 / 20%);
 }
@@ -141,7 +142,8 @@
   margin-top: 20px;
   width: 100%;
   background: var(--cp-color-14);
-  border-radius: 10px;
+  border: 3px solid rgb(48 54 61);
+  border-radius: 10px
 }
 
 .poster-collapse{
@@ -161,7 +163,7 @@
 
 .poster-show-demo-img{
   position: relative;
-  z-index: 3;
+  z-index: 2;
   width: 660px;
   animation: bottom 0.8s 0.3s both;
 }
@@ -170,7 +172,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 3;
   width: 660px;
   animation: bottom-pop 0.8s 0.3s both;
 }

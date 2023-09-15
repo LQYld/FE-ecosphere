@@ -10,6 +10,9 @@ import languageLogo from '../../../public/language.png'
 import { Toast, Collapse } from '@douyinfe/semi-ui'
 import vsCodeThemeDemo from '../../../public/demo/react-theme-demo.png'
 import chatSessionDemo from '../../../public/demo/chat-session.png'
+import blogDemo from '../../../public/demo/blog.png'
+import aggsearchDemo from '../../../public/demo/aggsearch.png'
+import biographicalDemo from '../../../public/demo/biographical.png'
 import styles from './index.module.css'
 import { useMemo, useState } from 'react'
 
@@ -52,10 +55,34 @@ const show_demo = [
   {
     name: 'Chat Session',
     introduce:
-      'vscode Doli Dark Theme is a stylish, modern theme designed to increase development efficiency. It uses a dark background and bright text to make code more legible.',
+      'Talk to AI and explore infinite possibilities! Our AI will surprise you. Come and talk to our AI!',
     url: chatSessionDemo.src,
     key: 'chat-session',
     dom: ShowDemoDom(chatSessionDemo.src)
+  },
+  {
+    name: 'Aggsearch',
+    introduce:
+      'One-stop search, giving you more answers! Our aggregated search website allows you to search multiple engines at once, providing you with more comprehensive and accurate search results. ',
+    url: aggsearchDemo.src,
+    key: 'aggsearch',
+    dom: ShowDemoDom(aggsearchDemo.src)
+  },
+  {
+    name: 'Blog',
+    introduce:
+      'Explore my world and share my thoughts! My Blog website is a platform to document my life, thoughts, and growth. Here, you can read my latest articles, insights, and opinions, and also share your ideas and feelings with me.',
+    url: blogDemo.src,
+    key: 'blog',
+    dom: ShowDemoDom(blogDemo.src)
+  },
+  {
+    name: 'Biographical',
+    introduce:
+      'A unique personal resume, showcasing your unique value! My resume will show you my professional ability, rich experience, and unique personal brand. ',
+    url: biographicalDemo.src,
+    key: 'biographical',
+    dom: ShowDemoDom(biographicalDemo.src)
   }
 ]
 
