@@ -16,7 +16,8 @@ import aggsearchDemo from '../../../public/demo/aggsearch.png'
 import biographicalDemo from '../../../public/demo/biographical.png'
 import peopleImg from '../../../public/people.png'
 import styles from './index.module.css'
-import { useState } from 'react'
+import '../../styles/github.css'
+import { useEffect, useState } from 'react'
 
 const projectMap = [
   {
@@ -91,6 +92,8 @@ const show_demo = [
 export default function ThreeDCelestialBody() {
   const [currentShowDemo, setCurrentShowDemo] = useState(show_demo[0])
 
+  const [contributions, setContributions] = useState(null)
+
   const pushWindow = (url: string) => {
     if (!url) {
       return Toast.warning({
@@ -107,6 +110,22 @@ export default function ThreeDCelestialBody() {
     const newCurrentShowDemo = show_demo.find((item) => item.key === event[0])
     setCurrentShowDemo(newCurrentShowDemo)
   }
+
+  const getContributions = async () => {
+    try {
+      const fetchResponse = await fetch('/api/github/githubRecord', {
+        method: 'GET'
+      })
+
+      setContributions(await fetchResponse.text())
+    } catch (error) {
+      setContributions(null)
+    }
+  }
+
+  useEffect(() => {
+    getContributions()
+  }, [])
 
   return (
     <div className={styles.container}>
@@ -215,7 +234,15 @@ export default function ThreeDCelestialBody() {
             className={`${styles['poster-purple-line']}`}
           />
         </div>
-        <div className={styles.people}>
+        <div
+          className={`${styles.contributions} animate__animated animate__bounceIn`}
+          dangerouslySetInnerHTML={{ __html: contributions }}
+        ></div>
+        <div
+          className={`${styles.people} ${
+            contributions ? 'margin-t-50' : 'margin-t-100'
+          }`}
+        >
           <img src={peopleImg.src} className={styles['people-img']} />
         </div>
         <div className={styles['footer']} />
