@@ -161,11 +161,14 @@
   border-radius: 4px;
 }
 
-.poster-show-demo-img{
-  position: relative;
+.poster-show-demo-img-div{
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: 2;
-  width: 660px;
-  animation: bottom 0.8s 0.3s both;
+  height: 100%;
+  transform: translateY(100px);
+  opacity: 0;
 }
 
 .poster-show-demo-img-previous{
@@ -176,6 +179,12 @@
   width: 660px;
   animation: bottom-pop 0.8s 0.3s both;
 }
+
+.poster-show-demo-img{
+  width: 660px;
+}
+
+.poster-show-demo-img-current{ animation: bottom 0.8s 0.3s both;}
 
 @keyframes bottom {
   0%{

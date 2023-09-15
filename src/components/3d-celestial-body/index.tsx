@@ -88,7 +88,6 @@ const show_demo = [
 
 export default function ThreeDCelestialBody() {
   const [currentShowDemo, setCurrentShowDemo] = useState(show_demo[0])
-  const [previousOne, setPreviousOne] = useState(show_demo[0])
 
   const pushWindow = (url: string) => {
     if (!url) {
@@ -104,21 +103,8 @@ export default function ThreeDCelestialBody() {
     const changeKey = event[0]
     if (!changeKey || changeKey === currentShowDemo.key) return
     const newCurrentShowDemo = show_demo.find((item) => item.key === event[0])
-    setPreviousOne(currentShowDemo)
     setCurrentShowDemo(newCurrentShowDemo)
   }
-
-  const previousOneDom = useMemo(() => {
-    return (
-      previousOne && (
-        <img
-          key={`copy_${previousOne.url}`}
-          src={previousOne.url}
-          className={styles['poster-show-demo-img-previous']}
-        />
-      )
-    )
-  }, [previousOne])
 
   return (
     <div className={styles.container}>
@@ -202,9 +188,21 @@ export default function ThreeDCelestialBody() {
           </div>
           <div className={`${styles['poster-show-demo']}`}>
             <div className={styles['poster-show-demo-img-box']}>
-              <div className="relative">
-                {currentShowDemo.dom}
-                {previousOneDom}
+              <div className="relative h-full">
+                {show_demo.map((item, index) => {
+                  return (
+                    <div
+                      key={`poster-show-demo-img_${index}`}
+                      className={
+                        item.key === currentShowDemo.key
+                          ? `${styles['poster-show-demo-img-div']} ${styles['poster-show-demo-img-current']}`
+                          : `${styles['poster-show-demo-img-previous']}`
+                      }
+                    >
+                      {item.dom}
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </div>
