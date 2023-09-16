@@ -27,3 +27,7 @@ declare module '*.hdr' {
   const hdr: any
   export default hdr
 }
+declare module '*.splinecode' {
+  const splinecode: any
+  export default splinecode
+}

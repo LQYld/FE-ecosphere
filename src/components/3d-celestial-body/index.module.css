@@ -233,6 +233,7 @@
 }
 
 .people{
+  position: relative;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -252,4 +253,158 @@
 
 .margin-t-100{
   margin-top: 100px;
+}
+
+.space-layer{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  width: 100%;
+  height: 900px;
+}
+
+.rocket-3d-resource{
+  position: absolute;
+  top: 0;
+  left: -400px;
+  width: 900px;
+}
+
+.rocket-3d-resource-img{
+  width: 100%;
+}
+
+.rocket-3d-resource-context{
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100px;
+  height: 200px;
+
+  /* background: pink; */
+}
+
+.rocket-3d-astronaut{
+  position: absolute;
+  top: 400px;
+  right: -400px;
+  width: 900px;
+}
+
+.rocket-3d-astronaut-img{
+  width: 100%;
+}
+
+.rocket-3d-astronaut-context{
+  position: absolute;
+  top: 0;
+  right: 100%;
+  bottom: 0;
+  margin: auto;
+  width: 560px;
+  font-size: 26px !important;
+  line-height: 52px !important;
+  letter-spacing: -0.03em !important;
+  font-weight: 600;
+  font-family: "Mona Sans","Mona Sans Header Fallback",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+
+.text-accent-primary{
+  color: #ffa28b;
+}
+
+.qrcode{
+  position: relative;
+  left: 50%;
+  display: grid;
+  overflow: hidden;
+  width: 270px;
+  height: 300px;
+  border-radius: 20px;
+  box-shadow: rgb(0 0 0 / 40%) 0 2px 10px 0,
+    rgb(0 0 0 / 50%) 0 2px 25px 0;
+  place-items: center;
+  transition: 0.3s ease-in-out;
+}
+
+.qrcode::before {
+  content: "";
+  position: absolute;
+  width: 40%;
+  height: 150%;
+  background: #40E0D0;
+  background: linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);
+  background: linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);
+  transform-origin: center;
+  animation: glowing 5s linear infinite;
+}
+
+.qrcode:hover{
+  transform: scale(1.2);   
+}
+
+.qrcode-context{
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 20px;
+  padding: 0;
+  width: 95%;
+  height: 95%;
+  text-align: center;
+  color: #fff;
+  background: #000814;
+  border-radius: 20px;
+  box-shadow: rgb(0 0 0 / 40%) 0 30px 60px -12px inset,
+    rgb(0 0 0 / 50%) 0 18px 36px -18px inset;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.qrcode-context-img{
+  width: 100%;
+}
+
+@keyframes glowing {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+.rocket-3d-astronaut-context-img{
+  width: 100%;
+  height: 100%;
+}
+
+.bottom-45{
+  bottom: -45px;
+}
+
+.atmosphere{
+  position: relative;
+  top: 300px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 100%;
+  min-height: 700px;
+  background: linear-gradient(to bottom, var(--cp-color-17) 0%, #2cc9ff 100%);
+}
+
+.island-3d-resource{
+  margin-top: 600px;
+  width: 800px;
+}
+
+.island-3d-resource-img{
+  width: 100%;
 }
