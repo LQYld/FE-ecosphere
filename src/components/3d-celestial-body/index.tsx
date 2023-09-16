@@ -15,8 +15,14 @@ import blogDemo from '../../../public/demo/blog.png'
 import aggsearchDemo from '../../../public/demo/aggsearch.png'
 import biographicalDemo from '../../../public/demo/biographical.png'
 import peopleImg from '../../../public/people.png'
+import qrcodeImg from '../../../public/qrcode.jpg'
+import rocket3DResource from '../../../public/spline/space-rocket.gif'
+import astronaut3DResource from '../../../public/spline/astronaut.gif'
+import island3DResource from '../../../public/spline/Island.png'
+// import land3DResource from '../../../public/spline/land.splinecode'
 import styles from './index.module.css'
 import '@douyinfe/semi-ui/dist/css/semi.min.css'
+// import '../../../public/js/spline-viewer.js'
 import 'animate.css'
 import '../../styles/github.css'
 import { useEffect, useState } from 'react'
@@ -125,8 +131,15 @@ export default function ThreeDCelestialBody() {
     }
   }
 
+  const initRocket3dResource = () => {
+    // const canvas = document.getElementById('rocket3dResource')
+    // const app = new Application(canvas as HTMLCanvasElement)
+    // app.load(rocket3DResource)
+  }
+
   useEffect(() => {
     getContributions()
+    initRocket3dResource()
   }, [])
 
   return (
@@ -246,8 +259,55 @@ export default function ThreeDCelestialBody() {
           }`}
         >
           <img src={peopleImg.src} className={styles['people-img']} />
+          <img
+            src={greenLineSvg.src}
+            className={`${styles['green-line-svg']} ${styles['bottom-45']}`}
+          />
         </div>
         <div className={styles['footer']} />
+        <div className={styles['space-layer']}>
+          <div id="rocket3dResource" className={styles['rocket-3d-resource']}>
+            <img
+              className={`${styles['rocket-3d-resource-img']}`}
+              src={rocket3DResource.src}
+            />
+            <div className={styles['rocket-3d-resource-context']}></div>
+          </div>
+          <div
+            id="astronaut3DResource"
+            className={styles['rocket-3d-astronaut']}
+          >
+            <img
+              className={`${styles['rocket-3d-astronaut-img']}`}
+              src={astronaut3DResource.src}
+            />
+            <div className={styles['rocket-3d-astronaut-context']}>
+              <h2 style={{ transitionDelay: '300ms' }}>
+                <p className={styles['text-accent-primary']}>
+                  How to find me ?
+                </p>
+                Scan my WeChat QR code and contact me anytime !
+              </h2>
+              <div className={styles['qrcode']}>
+                <div className={styles['qrcode-context']}>
+                  <img
+                    className={styles['qrcode-context-img']}
+                    src={qrcodeImg.src}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={styles['atmosphere']}>
+        {/* <spline-viewer url={land3DResource} /> */}
+        <div className={styles['island-3d-resource']}>
+          <img
+            src={island3DResource.src}
+            className={styles['island-3d-resource-img']}
+          />
+        </div>
       </div>
     </div>
   )

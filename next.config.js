@@ -10,7 +10,7 @@ const nextConfig = {
   ],
   webpack: (config) => {
     config.module.rules.push({
-      test: /\.(gltf|hdr)$/,
+      test: /\.(gltf|hdr|splinecode)$/,
       use: {
         loader: 'file-loader',
         options: {

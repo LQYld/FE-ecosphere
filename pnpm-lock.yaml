@@ -6,6 +6,7 @@ specifiers:
   '@douyinfe/semi-icons': ^2.31.2
   '@douyinfe/semi-ui': ^2.30.1
   '@iconify/react': ^4.1.0
+  '@splinetool/runtime': ^0.9.451
   '@testing-library/jest-dom': ^5.16.5
   '@testing-library/react': ^14.0.0
   '@types/jest': ^29.4.0
@@ -53,6 +54,7 @@ specifiers:
 dependencies:
   '@douyinfe/semi-icons': registry.npmmirror.com/@douyinfe/semi-icons/2.32.1_react@18.2.0
   '@douyinfe/semi-ui': registry.npmmirror.com/@douyinfe/semi-ui/2.32.1_biqbaboplfbrettd7655fr4n2y
+  '@splinetool/runtime': registry.npmmirror.com/@splinetool/runtime/0.9.451
   '@types/node': registry.npmmirror.com/@types/node/18.14.2
   '@types/react': registry.npmmirror.com/@types/react/18.0.28
   '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.11
@@ -1561,6 +1563,15 @@ packages:
     dependencies:
       '@sinonjs/commons': registry.npmmirror.com/@sinonjs/commons/2.0.0
     dev: true
+
+  registry.npmmirror.com/@splinetool/runtime/0.9.451:
+    resolution: {integrity: sha512-Q7CmLLY3o9TX+0xu0CVLAHnPW6KuyS30UJA2Cq8zEOaCLnXeiD5CiH/f8zt0E6DuvoJRTKVBAaAvCj7HVqUeRA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@splinetool/runtime/-/runtime-0.9.451.tgz}
+    name: '@splinetool/runtime'
+    version: 0.9.451
+    dependencies:
+      on-change: registry.npmmirror.com/on-change/4.0.2
+      semver-compare: registry.npmmirror.com/semver-compare/1.0.0
+    dev: false
 
   registry.npmmirror.com/@swc/helpers/0.4.14:
     resolution: {integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@swc/helpers/-/helpers-0.4.14.tgz}
@@ -6342,6 +6353,13 @@ packages:
       es-abstract: registry.npmmirror.com/es-abstract/1.21.2
     dev: false
 
+  registry.npmmirror.com/on-change/4.0.2:
+    resolution: {integrity: sha512-cMtCyuJmTx/bg2HCpHo3ZLeF7FZnBOapLqZHr2AlLeJ5Ul0Zu2mUJJz051Fdwu/Et2YW04ZD+TtU+gVy0ACNCA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/on-change/-/on-change-4.0.2.tgz}
+    name: on-change
+    version: 4.0.2
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dev: false
+
   registry.npmmirror.com/once/1.4.0:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/once/-/once-1.4.0.tgz}
     name: once
@@ -7207,6 +7225,12 @@ packages:
     version: 2.2.31
     dependencies:
       compute-scroll-into-view: registry.npmmirror.com/compute-scroll-into-view/1.0.20
+    dev: false
+
+  registry.npmmirror.com/semver-compare/1.0.0:
+    resolution: {integrity: sha512-YM3/ITh2MJ5MtzaM429anh+x2jiLVjqILF4m4oyQB18W7Ggea7BfqdH/wGMK7dDiMghv/6WG7znWMwUDzJiXow==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/semver-compare/-/semver-compare-1.0.0.tgz}
+    name: semver-compare
+    version: 1.0.0
     dev: false
 
   registry.npmmirror.com/semver/5.7.1:
