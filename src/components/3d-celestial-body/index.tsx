@@ -16,6 +16,8 @@ import aggsearchDemo from '../../../public/demo/aggsearch.png'
 import biographicalDemo from '../../../public/demo/biographical.png'
 import peopleImg from '../../../public/people.png'
 import styles from './index.module.css'
+import '@douyinfe/semi-ui/dist/css/semi.min.css'
+import 'animate.css'
 import '../../styles/github.css'
 import { useEffect, useState } from 'react'
 
