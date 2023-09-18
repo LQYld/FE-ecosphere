@@ -20,12 +20,18 @@ import rocket3DResource from '../../../public/spline/space-rocket.gif'
 import astronaut3DResource from '../../../public/spline/astronaut.gif'
 import island3DResource from '../../../public/spline/Island.png'
 // import land3DResource from '../../../public/spline/land.splinecode'
+
+import greenBranchImg from '../../../public/greenBranch.svg'
+import redBranchImg from '../../../public/redBranch.svg'
+import blueBranchImg from '../../../public/blueBranch.svg'
+
 import styles from './index.module.css'
 import '@douyinfe/semi-ui/dist/css/semi.min.css'
 // import '../../../public/js/spline-viewer.js'
 import 'animate.css'
 import '../../styles/github.css'
 import { useEffect, useState } from 'react'
+import Item from '@douyinfe/semi-ui/lib/es/cascader/item'
 
 const projectMap = [
   {
@@ -96,6 +102,80 @@ const show_demo = [
     dom: ShowDemoDom(biographicalDemo.src)
   }
 ]
+
+const schedule_map = [
+  {
+    title: 'Burn fat, shape your perfect body !',
+    color: 'red',
+    isReversal: false
+  },
+  {
+    title: 'Continuously improving, exceeding yourself !',
+    color: 'blue',
+    isReversal: true
+  },
+  {
+    title:
+      'Improve all aspects of your English skills and achieve your future !',
+    color: 'green',
+    isReversal: false
+  }
+]
+
+const BranchDom = ({ color, isReversal, title }) => {
+  let colorBranchLine = null
+
+  switch (color) {
+    case 'green':
+      colorBranchLine = {
+        lineStyle: 'green-branch-line',
+        img: greenBranchImg.src,
+        textStyle: `${styles['text-accent-primary-green']}`
+      }
+      break
+    case 'red':
+      colorBranchLine = {
+        lineStyle: 'red-branch-line',
+        img: redBranchImg.src,
+        textStyle: `${styles['text-accent-primary']}`
+      }
+      break
+    case 'blue':
+      colorBranchLine = {
+        lineStyle: 'blue-branch-line',
+        img: blueBranchImg.src,
+        textStyle: `${styles['text-accent-primary-blue']}`
+      }
+      break
+
+    default:
+      break
+  }
+
+  return (
+    <div>
+      <div
+        className={`${styles['branch-line']} ${
+          styles[colorBranchLine.lineStyle]
+        } relative`}
+      >
+        <img
+          className={`${styles['branch-line-img']} ${
+            isReversal ? 'rotate-180 right-full' : ''
+          }`}
+          src={colorBranchLine.img}
+        />
+        <div
+          className={`${styles['title-box']} ${
+            isReversal ? styles['title-box-reversal'] : styles['left-50px']
+          }`}
+        >
+          <div className={colorBranchLine.textStyle}>{title}</div>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export default function ThreeDCelestialBody() {
   const [currentShowDemo, setCurrentShowDemo] = useState(show_demo[0])
@@ -172,141 +252,165 @@ export default function ThreeDCelestialBody() {
           <EarthComponents />
         </div>
       </div>
-      <div className={`${styles.introduce}`}>
-        <img src={pinkLineSvg.src} className={styles['pink-line-svg']} />
-        <div className="w-full flex flex-nowrap justify-between pt-16">
-          {projectMap.map((item, index) => {
-            return (
-              <div
-                className={styles['project-box']}
-                key={`project-box_${index}`}
-              >
-                <div className={styles['project-box-icon']}>
-                  <img
-                    className={styles['project-box-icon-img']}
-                    src={item.logo}
-                  />
-                </div>
-                <h2 className={styles['project-box-icon-name']}>{item.name}</h2>
-                <p className={styles['project-box-icon-introduce']}>
-                  {item.introduce}
-                </p>
-                <a
-                  className={styles['project-box-icon-button']}
-                  onClick={() => pushWindow(item.url)}
+      <div className={`${styles['introduce-box']}`}>
+        <div className={`${styles.introduce}`}>
+          <img src={pinkLineSvg.src} className={styles['pink-line-svg']} />
+          <div className="w-full flex flex-nowrap justify-between pt-16">
+            {projectMap.map((item, index) => {
+              return (
+                <div
+                  className={styles['project-box']}
+                  key={`project-box_${index}`}
                 >
-                  Get started immediately!
-                </a>
-              </div>
-            )
-          })}
-        </div>
-        <img src={yellowLineSvg.src} className={styles['yellow-line-svg']} />
-        <div className={styles.poster}>
-          <div className={styles['poster-box']}>
-            <div className={styles['poster-collapse']}>
-              <Collapse
-                accordion
-                activeKey={currentShowDemo.key}
-                onChange={collapseChange}
-              >
-                {show_demo.map((item, index) => {
-                  return (
-                    <Collapse.Panel
-                      key={`poster_demo_${index}`}
-                      header={item.name}
-                      itemKey={item.key}
-                    >
-                      <p>{item.introduce}</p>
-                    </Collapse.Panel>
-                  )
-                })}
-              </Collapse>
-            </div>
-            <div className={`${styles['poster-show-demo']}`}>
-              <div className={styles['poster-show-demo-img-box']}>
-                <div className="relative h-full">
+                  <div className={styles['project-box-icon']}>
+                    <img
+                      className={styles['project-box-icon-img']}
+                      src={item.logo}
+                    />
+                  </div>
+                  <h2 className={styles['project-box-icon-name']}>
+                    {item.name}
+                  </h2>
+                  <p className={styles['project-box-icon-introduce']}>
+                    {item.introduce}
+                  </p>
+                  <a
+                    className={styles['project-box-icon-button']}
+                    onClick={() => pushWindow(item.url)}
+                  >
+                    Get started immediately!
+                  </a>
+                </div>
+              )
+            })}
+          </div>
+          <img src={yellowLineSvg.src} className={styles['yellow-line-svg']} />
+          <div className={styles.poster}>
+            <div className={styles['poster-box']}>
+              <div className={styles['poster-collapse']}>
+                <Collapse
+                  accordion
+                  activeKey={currentShowDemo.key}
+                  onChange={collapseChange}
+                >
                   {show_demo.map((item, index) => {
                     return (
-                      <div
-                        key={`poster-show-demo-img_${index}`}
-                        className={
-                          item.key === currentShowDemo.key
-                            ? `${styles['poster-show-demo-img-div']} ${styles['poster-show-demo-img-current']}`
-                            : `${styles['poster-show-demo-img-previous']}`
-                        }
+                      <Collapse.Panel
+                        key={`poster_demo_${index}`}
+                        header={item.name}
+                        itemKey={item.key}
                       >
-                        {item.dom}
-                      </div>
+                        <p>{item.introduce}</p>
+                      </Collapse.Panel>
                     )
                   })}
+                </Collapse>
+              </div>
+              <div className={`${styles['poster-show-demo']}`}>
+                <div className={styles['poster-show-demo-img-box']}>
+                  <div className="relative h-full">
+                    {show_demo.map((item, index) => {
+                      return (
+                        <div
+                          key={`poster-show-demo-img_${index}`}
+                          className={
+                            item.key === currentShowDemo.key
+                              ? `${styles['poster-show-demo-img-div']} ${styles['poster-show-demo-img-current']}`
+                              : `${styles['poster-show-demo-img-previous']}`
+                          }
+                        >
+                          {item.dom}
+                        </div>
+                      )
+                    })}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <img
-            src={purpleLineSvg.src}
-            className={`${styles['poster-purple-line']}`}
-          />
-        </div>
-        <div
-          className={`${styles.contributions} animate__animated animate__bounceIn`}
-          dangerouslySetInnerHTML={{ __html: contributions }}
-        ></div>
-        <div
-          className={`${styles.people} ${
-            contributions ? 'margin-t-50' : 'margin-t-100'
-          }`}
-        >
-          <img src={peopleImg.src} className={styles['people-img']} />
-          <img
-            src={greenLineSvg.src}
-            className={`${styles['green-line-svg']} ${styles['bottom-45']}`}
-          />
-        </div>
-        <div className={styles['footer']} />
-        <div className={styles['space-layer']}>
-          <div id="rocket3dResource" className={styles['rocket-3d-resource']}>
             <img
-              className={`${styles['rocket-3d-resource-img']}`}
-              src={rocket3DResource.src}
+              src={purpleLineSvg.src}
+              className={`${styles['poster-purple-line']}`}
             />
-            <div className={styles['rocket-3d-resource-context']}></div>
           </div>
           <div
-            id="astronaut3DResource"
-            className={styles['rocket-3d-astronaut']}
+            className={`${styles.contributions} animate__animated animate__bounceIn`}
+            dangerouslySetInnerHTML={{ __html: contributions }}
+          ></div>
+          <div
+            className={`${styles.people} ${
+              contributions ? 'margin-t-50' : 'margin-t-100'
+            }`}
           >
+            <img src={peopleImg.src} className={styles['people-img']} />
             <img
-              className={`${styles['rocket-3d-astronaut-img']}`}
-              src={astronaut3DResource.src}
+              src={greenLineSvg.src}
+              className={`${styles['green-line-svg']} ${styles['bottom-45']}`}
             />
-            <div className={styles['rocket-3d-astronaut-context']}>
-              <h2 style={{ transitionDelay: '300ms' }}>
-                <p className={styles['text-accent-primary']}>
-                  How to find me ?
-                </p>
-                Scan my WeChat QR code and contact me anytime !
-              </h2>
-              <div className={styles['qrcode']}>
-                <div className={styles['qrcode-context']}>
-                  <img
-                    className={styles['qrcode-context-img']}
-                    src={qrcodeImg.src}
-                  />
+          </div>
+          <div className={styles['footer']} />
+          <div className={styles['space-layer']}>
+            <div id="rocket3dResource" className={styles['rocket-3d-resource']}>
+              <div className="relative">
+                <img
+                  className={`${styles['rocket-3d-resource-img']}`}
+                  src={rocket3DResource.src}
+                />
+                <div className={styles['rocket-3d-resource-context']}>
+                  <h2 style={{ transitionDelay: '300ms' }}>
+                    <p className={styles['text-accent-primary-green']}>
+                      100-Day Challenge, witness the transformation !
+                    </p>
+                    I will fully commit myself to weight loss and professional
+                    skill improvement over the next 100 days !
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <div className={styles['schedule']}>
+              {schedule_map.map((item, index) => {
+                return (
+                  <div key={`scheduleItem_${index}`}>
+                    <BranchDom {...item} />
+                  </div>
+                )
+              })}
+            </div>
+            <div
+              id="astronaut3DResource"
+              className={styles['rocket-3d-astronaut']}
+            >
+              <div className={`${styles['margin-l-500']} relative`}>
+                <img
+                  className={`${styles['rocket-3d-astronaut-img']}`}
+                  src={astronaut3DResource.src}
+                />
+                <div className={styles['rocket-3d-astronaut-context']}>
+                  <h2 style={{ transitionDelay: '300ms' }}>
+                    <p className={styles['text-accent-primary']}>
+                      How to find me ?
+                    </p>
+                    Scan my WeChat QR code and contact me anytime !
+                  </h2>
+                  <div className={styles['qrcode']}>
+                    <div className={styles['qrcode-context']}>
+                      <img
+                        className={styles['qrcode-context-img']}
+                        src={qrcodeImg.src}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div className={styles['atmosphere']}>
-        {/* <spline-viewer url={land3DResource} /> */}
-        <div className={styles['island-3d-resource']}>
-          <img
-            src={island3DResource.src}
-            className={styles['island-3d-resource-img']}
-          />
+          <div className={styles['atmosphere']}>
+            <div className={styles['island-3d-resource']}>
+              <img
+                src={island3DResource.src}
+                className={styles['island-3d-resource-img']}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
