@@ -36007,15 +36007,13 @@ function a6(e, t, i, r, s) {
 }
 var an = 32,
   o6 = (e, t) => e.candidate - t.candidate,
-  Ln = new Array(an)
-    .fill()
-    .map(() => ({
-      count: 0,
-      bounds: new Float32Array(6),
-      rightCacheBounds: new Float32Array(6),
-      leftCacheBounds: new Float32Array(6),
-      candidate: 0
-    })),
+  Ln = new Array(an).fill().map(() => ({
+    count: 0,
+    bounds: new Float32Array(6),
+    rightCacheBounds: new Float32Array(6),
+    leftCacheBounds: new Float32Array(6),
+    candidate: 0
+  })),
   Md = new Float32Array(6)
 function l6(e, t, i, r, s, n) {
   let a = -1,
