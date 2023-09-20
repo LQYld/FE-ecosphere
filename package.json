@@ -16,6 +16,7 @@
     "ci": "npm run lint && npm run stylelint && npm run test"
   },
   "dependencies": {
+    "@antv/g2": "^5.1.3",
     "@douyinfe/semi-icons": "^2.31.2",
     "@douyinfe/semi-ui": "^2.30.1",
     "@splinetool/runtime": "^0.9.451",
