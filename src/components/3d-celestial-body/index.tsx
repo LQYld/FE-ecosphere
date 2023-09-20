@@ -25,13 +25,17 @@ import greenBranchImg from '../../../public/greenBranch.svg'
 import redBranchImg from '../../../public/redBranch.svg'
 import blueBranchImg from '../../../public/blueBranch.svg'
 
+import { Chart } from '@antv/g2'
+import professionalSkillsBook from '@/common/json/professionalSkillsBook.json'
+
+import manImg from '../../../public/spline/man.png'
+
 import styles from './index.module.css'
 import '@douyinfe/semi-ui/dist/css/semi.min.css'
 // import '../../../public/js/spline-viewer.js'
 import 'animate.css'
 import '../../styles/github.css'
 import { useEffect, useState } from 'react'
-import Item from '@douyinfe/semi-ui/lib/es/cascader/item'
 
 const projectMap = [
   {
@@ -124,27 +128,69 @@ const schedule_map = [
 
 const BranchDom = ({ color, isReversal, title }) => {
   let colorBranchLine = null
-
+  useEffect(() => {
+    if (color === 'blue') {
+      const chart = new Chart({
+        container: 'container',
+        autoFit: true
+      })
+      chart
+        .wordCloud()
+        .data({
+          value: professionalSkillsBook
+        })
+        .layout({
+          spiral: 'rectangular'
+        })
+        .style('labelFontSize', 12)
+        .encode('color', 'text')
+      chart.options({
+        legend: false
+      })
+      chart.render()
+    }
+  }, [])
   switch (color) {
-    case 'green':
-      colorBranchLine = {
-        lineStyle: 'green-branch-line',
-        img: greenBranchImg.src,
-        textStyle: `${styles['text-accent-primary-green']}`
-      }
-      break
     case 'red':
       colorBranchLine = {
         lineStyle: 'red-branch-line',
         img: redBranchImg.src,
-        textStyle: `${styles['text-accent-primary']}`
+        textStyle: `${styles['text-accent-primary']}`,
+        contextDom: (
+          <div className={styles['man-box']}>
+            <div className="flex-1">
+              <div>Shape</div>
+              <div
+                className={`${styles['main-box-type']} ${styles['text-accent-primary']}`}
+              >
+                Slightly fat type
+              </div>
+              <div>
+                Persist in aerobic exercise and diet control, and the meat on
+                your stomach will disappear immediately!
+              </div>
+            </div>
+            <img className={styles['man-img']} src={manImg.src} />
+          </div>
+        )
       }
       break
     case 'blue':
       colorBranchLine = {
         lineStyle: 'blue-branch-line',
         img: blueBranchImg.src,
-        textStyle: `${styles['text-accent-primary-blue']}`
+        textStyle: `${styles['text-accent-primary-blue']}`,
+        contextDom: (
+          <div className={styles['technology-chart']} id="container"></div>
+        )
+      }
+      break
+    case 'green':
+      colorBranchLine = {
+        lineStyle: 'green-branch-line',
+        img: greenBranchImg.src,
+        textStyle: `${styles['text-accent-primary-green']}`,
+        contextDom: <></>
       }
       break
 
@@ -171,6 +217,7 @@ const BranchDom = ({ color, isReversal, title }) => {
           }`}
         >
           <div className={colorBranchLine.textStyle}>{title}</div>
+          {colorBranchLine.contextDom}
         </div>
       </div>
     </div>
