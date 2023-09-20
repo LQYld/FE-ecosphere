@@ -132,7 +132,10 @@ const BranchDom = ({ color, isReversal, title }) => {
     if (color === 'blue') {
       const chart = new Chart({
         container: 'container',
-        autoFit: true
+        autoFit: true,
+        width: 500,
+        height: 500,
+        marginTop: 0
       })
       chart
         .wordCloud()
@@ -140,9 +143,9 @@ const BranchDom = ({ color, isReversal, title }) => {
           value: professionalSkillsBook
         })
         .layout({
-          spiral: 'rectangular'
+          spiral: 'rectangular',
+          fontSize: 10
         })
-        .style('labelFontSize', 12)
         .encode('color', 'text')
       chart.options({
         legend: false
