@@ -27,6 +27,7 @@ import blueBranchImg from '../../../public/blueBranch.svg'
 
 import englishLogo from '../../../public/spline/englishLogo.png'
 import english from '../../../public/spline/english.png'
+import knowledgePlanet from '../../../public/spline/knowledgePlanet.png'
 
 import { Chart } from '@antv/g2'
 import professionalSkillsBook from '@/common/json/professionalSkillsBook.json'
@@ -408,7 +409,7 @@ export default function ThreeDCelestialBody() {
           <div className={styles['footer']} />
           <div className={styles['space-layer']}>
             <div id="rocket3dResource" className={styles['rocket-3d-resource']}>
-              <div className="relative">
+              <div className={`relative ${styles['rocket-3d-resource-box']}`}>
                 <img
                   className={`${styles['rocket-3d-resource-img']}`}
                   src={rocket3DResource.src}
@@ -421,6 +422,12 @@ export default function ThreeDCelestialBody() {
                     I will fully commit myself to weight loss and professional
                     skill improvement over the next 100 days !
                   </h2>
+                </div>
+                <div className={styles['knowledge-planet']}>
+                  <img
+                    src={knowledgePlanet.src}
+                    className={styles['knowledge-planet-img']}
+                  />
                 </div>
               </div>
             </div>
