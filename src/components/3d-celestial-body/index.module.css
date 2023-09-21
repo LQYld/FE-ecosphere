@@ -67,6 +67,7 @@
 }
 
 .introduce{
+  position: relative;
   width: 1000px;
 }
 
@@ -537,4 +538,40 @@
 .technology-chart:hover {
   border: 1px solid rgb(255 255 255 / 45.4%);
   box-shadow: 0 0 20px 1px #ffbb763f;
+}
+
+
+.english-box{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin-top: 20px;
+  width: 500px;
+  background-color: rgb(255 255 255 / 7.4%);
+  border: 1px solid rgb(255 255 255 / 22.2%);
+  border-radius: .7rem;
+  transition: all ease .3s;
+  backdrop-filter: blur(20px);
+  cursor: pointer;
+}
+
+.english-box:hover {
+  border: 1px solid rgb(255 255 255 / 45.4%);
+  box-shadow: 0 0 20px 1px #ffbb763f;
+}
+
+.english-img{
+  position: relative;
+  display: block;
+  padding-top: 50px;
+  width: 400px;
+}
+
+.english-img-logo{
+  position: absolute;
+  right: 40px;
+  display: block;
+  width: 200px;
 }

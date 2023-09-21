@@ -25,6 +25,9 @@ import greenBranchImg from '../../../public/greenBranch.svg'
 import redBranchImg from '../../../public/redBranch.svg'
 import blueBranchImg from '../../../public/blueBranch.svg'
 
+import englishLogo from '../../../public/spline/englishLogo.png'
+import english from '../../../public/spline/english.png'
+
 import { Chart } from '@antv/g2'
 import professionalSkillsBook from '@/common/json/professionalSkillsBook.json'
 
@@ -193,7 +196,12 @@ const BranchDom = ({ color, isReversal, title }) => {
         lineStyle: 'green-branch-line',
         img: greenBranchImg.src,
         textStyle: `${styles['text-accent-primary-green']}`,
-        contextDom: <></>
+        contextDom: (
+          <div className={styles['english-box']}>
+            <img className={styles['english-img-logo']} src={englishLogo.src} />
+            <img className={styles['english-img']} src={english.src} />
+          </div>
+        )
       }
       break
 
