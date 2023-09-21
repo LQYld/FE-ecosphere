@@ -14,32 +14,46 @@ import chatSessionDemo from '../../../public/demo/chat-session.png'
 import blogDemo from '../../../public/demo/blog.png'
 import aggsearchDemo from '../../../public/demo/aggsearch.png'
 import biographicalDemo from '../../../public/demo/biographical.png'
-import peopleImg from '../../../public/people.png'
+
 import qrcodeImg from '../../../public/qrcode.jpg'
-import rocket3DResource from '../../../public/spline/space-rocket.gif'
+
+// import rocket3DResource from '../../../public/spline/space-rocket.gif'
 import astronaut3DResource from '../../../public/spline/astronaut.gif'
-import island3DResource from '../../../public/spline/Island.png'
-// import land3DResource from '../../../public/spline/land.splinecode'
+// import island3DResource from '../../../public/spline/Island.png'
+
+import land3DResource from '../../../public/spline/land.splinecode'
+import people3DResource from '../../../public/spline/people.splinecode'
+import rocket3DResource from '../../../public/spline/rocket.splinecode'
+import knowledge3DResource from '../../../public/spline/knowledge.splinecode'
+import man3DResource from '../../../public/spline/man.splinecode'
+import english3DResource from '../../../public/spline/english.splinecode'
+import et3DResource from '../../../public/spline/et.splinecode'
 
 import greenBranchImg from '../../../public/greenBranch.svg'
 import redBranchImg from '../../../public/redBranch.svg'
 import blueBranchImg from '../../../public/blueBranch.svg'
 
-import englishLogo from '../../../public/spline/englishLogo.png'
-import english from '../../../public/spline/english.png'
-import knowledgePlanet from '../../../public/spline/knowledgePlanet.png'
+// import englishLogo from '../../../public/spline/englishLogo.png'
+// import english from '../../../public/spline/english.png'
+// import knowledgePlanet from '../../../public/spline/knowledgePlanet.png'
 
 import { Chart } from '@antv/g2'
 import professionalSkillsBook from '@/common/json/professionalSkillsBook.json'
 
-import manImg from '../../../public/spline/man.png'
+// import manImg from '../../../public/spline/man.png'
 
 import styles from './index.module.css'
 import '@douyinfe/semi-ui/dist/css/semi.min.css'
-// import '../../../public/js/spline-viewer.js'
 import 'animate.css'
 import '../../styles/github.css'
-import { useEffect, useState } from 'react'
+import React, {
+  useEffect,
+  useLayoutEffect,
+  useState,
+  useRef,
+  Suspense
+} from 'react'
+const Spline = React.lazy(() => import('@splinetool/react-spline'))
 
 const projectMap = [
   {
@@ -132,6 +146,52 @@ const schedule_map = [
 
 const BranchDom = ({ color, isReversal, title }) => {
   let colorBranchLine = null
+
+  const manSplineApp = useRef(null)
+  const man3DRef = useRef(null)
+  const [showMan3D, setShowMan3D] = useState(false)
+  const manOnLoad = (spline) => {
+    manSplineApp.current = spline
+    spline.setZoom(1.2)
+    man3DRef.current = spline.findObjectByName('Camera')
+    if (man3DRef.current) {
+      man3DRef.current.position.x = 3.43
+      man3DRef.current.position.y = 293.0
+      man3DRef.current.position.z = 739.58
+      setShowMan3D(true)
+    }
+  }
+
+  const englishSplineApp = useRef(null)
+  const english3DRef = useRef(null)
+  const [showEnglish3D, setShowEnglish3D] = useState(false)
+  const englishOnLoad = (spline) => {
+    englishSplineApp.current = spline
+    spline.setZoom(0.5)
+    english3DRef.current = spline.findObjectByName('Camera')
+    if (english3DRef.current) {
+      english3DRef.current.position.x = 290.38
+      english3DRef.current.position.y = 798.16
+      english3DRef.current.position.z = 816.52
+      setShowEnglish3D(true)
+    }
+  }
+
+  const etSplineApp = useRef(null)
+  const et3DRef = useRef(null)
+  const [showEt3D, setShowEt3D] = useState(false)
+  const etOnLoad = (spline) => {
+    etSplineApp.current = spline
+    spline.setZoom(0.4)
+    et3DRef.current = spline.findObjectByName('Camera')
+    if (et3DRef.current) {
+      et3DRef.current.position.x = 1065.68
+      et3DRef.current.position.y = 1312.43
+      et3DRef.current.position.z = 899.65
+      setShowEt3D(true)
+    }
+  }
+
   useEffect(() => {
     if (color === 'blue') {
       const chart = new Chart({
@@ -177,7 +237,16 @@ const BranchDom = ({ color, isReversal, title }) => {
                 your stomach will disappear immediately!
               </div>
             </div>
-            <img className={styles['man-img']} src={manImg.src} />
+            {/* <img className={styles['man-img']} src={manImg.src} /> */}
+            <div
+              className={`${styles['man-img']} ${
+                showMan3D ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <Suspense>
+                <Spline scene={man3DResource} onLoad={manOnLoad} />
+              </Suspense>
+            </div>
           </div>
         )
       }
@@ -199,8 +268,27 @@ const BranchDom = ({ color, isReversal, title }) => {
         textStyle: `${styles['text-accent-primary-green']}`,
         contextDom: (
           <div className={styles['english-box']}>
-            <img className={styles['english-img-logo']} src={englishLogo.src} />
-            <img className={styles['english-img']} src={english.src} />
+            <div
+              className={`${showEnglish3D ? 'opacity-100' : 'opacity-0'} ${
+                styles['english-img']
+              }} h-full`}
+            >
+              <Suspense>
+                <Spline scene={english3DResource} onLoad={englishOnLoad} />
+              </Suspense>
+            </div>
+            <div
+              className={`${
+                showEt3D ? 'opacity-100' : 'opacity-0'
+              } absolute w-full h-full`}
+              style={{ bottom: '110%' }}
+            >
+              <Suspense>
+                <Spline scene={et3DResource} onLoad={etOnLoad} />
+              </Suspense>
+            </div>
+            {/* <img className={styles['english-img-logo']} src={englishLogo.src} />
+            <img className={styles['english-img']} src={english.src} /> */}
           </div>
         )
       }
@@ -270,16 +358,79 @@ export default function ThreeDCelestialBody() {
     }
   }
 
-  const initRocket3dResource = () => {
-    // const canvas = document.getElementById('rocket3dResource')
-    // const app = new Application(canvas as HTMLCanvasElement)
-    // app.load(rocket3DResource)
-  }
+  // const initLand3dResource = () => {
+  //   const canvas = document.getElementById('land3dResource')
+  //   console.log(canvas, 'canvas')
+  //   const app = new Application(canvas as HTMLCanvasElement)
+  //   app.load(land3DResource)
+  // }
 
   useEffect(() => {
     getContributions()
-    initRocket3dResource()
   }, [])
+
+  useLayoutEffect(() => {
+    // initLand3dResource()
+  }, [])
+
+  const landSplineApp = useRef(null)
+  const land3DRef = useRef(null)
+  const [showLand3D, setShowLand3D] = useState(false)
+  const landOnLoad = (spline) => {
+    landSplineApp.current = spline
+    land3DRef.current = spline.findObjectByName('Camera')
+    if (land3DRef.current) {
+      land3DRef.current.position.x -= 2000
+      land3DRef.current.position.y += 3500
+      land3DRef.current.position.z += 4500
+      setShowLand3D(true)
+    }
+  }
+
+  const peopleSplineApp = useRef(null)
+  const people3DRef = useRef(null)
+  const [showPeople3D, setShowPeople3D] = useState(false)
+  const peopleOnLoad = (spline) => {
+    peopleSplineApp.current = spline
+    people3DRef.current = spline.findObjectByName('Camera')
+    spline.setZoom(0.9)
+    if (people3DRef.current) {
+      people3DRef.current.position.x = 69.93
+      people3DRef.current.position.y = 61.31
+      people3DRef.current.position.z = 1016.47
+      setShowPeople3D(true)
+    }
+  }
+
+  const rocketSplineApp = useRef(null)
+  const rocket3DRef = useRef(null)
+  const [showRocket3D, setShowRocket3D] = useState(false)
+  const rocketOnLoad = (spline) => {
+    rocketSplineApp.current = spline
+    rocket3DRef.current = spline.findObjectByName('Camera')
+    spline.setZoom(0.9)
+    if (rocket3DRef.current) {
+      rocket3DRef.current.position.x = 990.42
+      rocket3DRef.current.position.y = 41.27
+      rocket3DRef.current.position.z = -79.35
+      setShowRocket3D(true)
+    }
+  }
+
+  const knowledgeSplineApp = useRef(null)
+  const knowledge3DRef = useRef(null)
+  const [showKnowledge3D, setShowKnowledge3D] = useState(false)
+  const knowledgeOnLoad = (spline) => {
+    knowledgeSplineApp.current = spline
+    knowledge3DRef.current = spline.findObjectByName('Camera')
+    spline.setZoom(0.9)
+    if (knowledge3DRef.current) {
+      knowledge3DRef.current.position.x = 1906.41
+      knowledge3DRef.current.position.y = 572.35
+      knowledge3DRef.current.position.z = 3286.19
+      setShowKnowledge3D(true)
+    }
+  }
 
   return (
     <div className={styles.container}>
@@ -400,7 +551,17 @@ export default function ThreeDCelestialBody() {
               contributions ? 'margin-t-50' : 'margin-t-100'
             }`}
           >
-            <img src={peopleImg.src} className={styles['people-img']} />
+            <div className={styles['people-img']}>
+              <div
+                className={`${
+                  showPeople3D ? 'opacity-100 h-full' : 'opacity-0 h-full'
+                }`}
+              >
+                <Suspense>
+                  <Spline scene={people3DResource} onLoad={peopleOnLoad} />
+                </Suspense>
+              </div>
+            </div>
             <img
               src={greenLineSvg.src}
               className={`${styles['green-line-svg']} ${styles['bottom-45']}`}
@@ -410,10 +571,15 @@ export default function ThreeDCelestialBody() {
           <div className={styles['space-layer']}>
             <div id="rocket3dResource" className={styles['rocket-3d-resource']}>
               <div className={`relative ${styles['rocket-3d-resource-box']}`}>
-                <img
-                  className={`${styles['rocket-3d-resource-img']}`}
-                  src={rocket3DResource.src}
-                />
+                <div
+                  className={`${styles['rocket-3d-resource-img']} ${
+                    showRocket3D ? 'opacity-100' : 'opacity-0'
+                  }`}
+                >
+                  <Suspense>
+                    <Spline scene={rocket3DResource} onLoad={rocketOnLoad} />
+                  </Suspense>
+                </div>
                 <div className={styles['rocket-3d-resource-context']}>
                   <h2 style={{ transitionDelay: '300ms' }}>
                     <p className={styles['text-accent-primary-green']}>
@@ -424,10 +590,22 @@ export default function ThreeDCelestialBody() {
                   </h2>
                 </div>
                 <div className={styles['knowledge-planet']}>
-                  <img
+                  {/* <img
                     src={knowledgePlanet.src}
                     className={styles['knowledge-planet-img']}
-                  />
+                  /> */}
+                  <div
+                    className={`${
+                      showKnowledge3D ? 'opacity-100' : 'opacity-0'
+                    } h-full`}
+                  >
+                    <Suspense>
+                      <Spline
+                        scene={knowledge3DResource}
+                        onLoad={knowledgeOnLoad}
+                      />
+                    </Suspense>
+                  </div>
                 </div>
               </div>
             </div>
@@ -470,10 +648,16 @@ export default function ThreeDCelestialBody() {
           </div>
           <div className={styles['atmosphere']}>
             <div className={styles['island-3d-resource']}>
-              <img
-                src={island3DResource.src}
-                className={styles['island-3d-resource-img']}
-              />
+              <div
+                id="land3dResource"
+                className={`${styles['land-3d-resource-obj']} ${
+                  showLand3D ? 'opacity-100' : 'opacity-0'
+                }`}
+              >
+                <Suspense>
+                  <Spline scene={land3DResource} onLoad={landOnLoad} />
+                </Suspense>
+              </div>
             </div>
           </div>
         </div>

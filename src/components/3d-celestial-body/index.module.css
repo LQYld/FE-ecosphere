@@ -248,6 +248,7 @@
 
 .people-img{
   width: 700px;
+  height: 466px;
 }
 
 .contributions{
@@ -277,8 +278,8 @@
 .knowledge-planet{
   position: absolute;
   bottom: -300px;
-  left: 300px;
-  width: 350px;
+  left: 200px;
+  width: 766px;
 }
 
 .knowledge-planet-img{
@@ -502,6 +503,8 @@
   display: flex;
   justify-content: space-between;
   padding: 20px;
+  padding-right: 0;
+  padding-bottom: 40px;
   margin-top: 20px;
   width: 450px;
   background-color: rgb(255 255 255 / 7.4%);
@@ -518,7 +521,7 @@
 }
 
 .man-img{
-  width: 100px;
+  width: 150px;
 }
 
 .main-box-type{
@@ -557,6 +560,7 @@
   padding: 20px;
   margin-top: 20px;
   width: 500px;
+  height: 400px;
   background-color: rgb(255 255 255 / 7.4%);
   border: 1px solid rgb(255 255 255 / 22.2%);
   border-radius: .7rem;
@@ -574,7 +578,13 @@
   position: relative;
   display: block;
   padding-top: 50px;
-  width: 400px;
+  width: 500px;
+}
+
+.et-img{
+  position: absolute;
+  bottom: 100%;
+  width: 500px;
 }
 
 .english-img-logo{
@@ -582,4 +592,13 @@
   right: 40px;
   display: block;
   width: 200px;
+}
+
+.land-3d-resource-obj{
+  width: 100%;
+  height: 500px;
+}
+
+.land-spline{
+  transform: scale(1);
 }
