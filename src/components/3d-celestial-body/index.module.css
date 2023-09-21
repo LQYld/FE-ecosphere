@@ -270,11 +270,19 @@
 }
 
 .rocket-3d-resource{
-  /* position: relative; */
-
-  /* top: 0; */
   margin-left: -300px;
+}
 
+
+.knowledge-planet{
+  position: absolute;
+  bottom: -300px;
+  left: 300px;
+  width: 350px;
+}
+
+.knowledge-planet-img{
+  width: 100%;
 }
 
 .rocket-3d-resource-img{
