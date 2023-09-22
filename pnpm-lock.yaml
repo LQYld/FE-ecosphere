@@ -7,6 +7,7 @@ specifiers:
   '@douyinfe/semi-icons': ^2.31.2
   '@douyinfe/semi-ui': ^2.30.1
   '@iconify/react': ^4.1.0
+  '@splinetool/loader': ^0.9.455
   '@splinetool/react-spline': ^2.2.6
   '@splinetool/runtime': ^0.9.455
   '@testing-library/jest-dom': ^5.16.5
@@ -57,6 +58,7 @@ dependencies:
   '@antv/g2': registry.npmmirror.com/@antv/g2/5.1.3
   '@douyinfe/semi-icons': registry.npmmirror.com/@douyinfe/semi-icons/2.32.1_react@18.2.0
   '@douyinfe/semi-ui': registry.npmmirror.com/@douyinfe/semi-ui/2.32.1_biqbaboplfbrettd7655fr4n2y
+  '@splinetool/loader': registry.npmmirror.com/@splinetool/loader/0.9.455_three@0.151.3
   '@splinetool/react-spline': registry.npmmirror.com/@splinetool/react-spline/2.2.6_hvpu6nmk22cvno2qjzxlfxz3se
   '@splinetool/runtime': registry.npmmirror.com/@splinetool/runtime/0.9.455
   '@types/node': registry.npmmirror.com/@types/node/18.14.2
@@ -1868,6 +1870,18 @@ packages:
     dependencies:
       '@sinonjs/commons': registry.npmmirror.com/@sinonjs/commons/2.0.0
     dev: true
+
+  registry.npmmirror.com/@splinetool/loader/0.9.455_three@0.151.3:
+    resolution: {integrity: sha512-8oEXM60RcoFmkQ2QHGCpANt/DYFWyDJVS6wpmqmVcR0s+QUKpyvXzmwYR0etSr96sKTAO7PcyfRWY3XjZTbR0w==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@splinetool/loader/-/loader-0.9.455.tgz}
+    id: registry.npmmirror.com/@splinetool/loader/0.9.455
+    name: '@splinetool/loader'
+    version: 0.9.455
+    peerDependencies:
+      three: '>=0.133.0'
+    dependencies:
+      semver-compare: registry.npmmirror.com/semver-compare/1.0.0
+      three: registry.npmmirror.com/three/0.151.3
+    dev: false
 
   registry.npmmirror.com/@splinetool/react-spline/2.2.6_hvpu6nmk22cvno2qjzxlfxz3se:
     resolution: {integrity: sha512-y9L2VEbnC6FNZZu8XMmWM9YTTTWal6kJVfP05Amf0QqDNzCSumKsJxZyGUODvuCmiAvy0PfIfEsiVKnSxvhsDw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@splinetool/react-spline/-/react-spline-2.2.6.tgz}
