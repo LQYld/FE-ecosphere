@@ -12,7 +12,7 @@ export default function EarthComponents() {
   const threeDom = useRef(null)
   useEffect(() => {
     const threeDomChild = threeDom.current
-    if(!threeDomChild) return;
+    if (!threeDomChild) return
     for (let i = 0; i < threeDomChild.children.length; i++) {
       const element = threeDomChild.children[i]
       element.remove()
