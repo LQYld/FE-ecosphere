@@ -583,3 +583,10 @@
   display: block;
   width: 200px;
 }
+
+.et-box{
+  position: absolute;
+  bottom: 145%;
+  left: 50px;
+  width: 300px;
+}

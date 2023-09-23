@@ -20,6 +20,7 @@ import rocket3DResource from '../../../public/spline/space-rocket.gif'
 import astronaut3DResource from '../../../public/spline/astronaut.gif'
 import island3DResource from '../../../public/spline/Island.png'
 // import land3DResource from '../../../public/spline/land.splinecode'
+import et3DResource from '../../../public/spline/et.png'
 
 import greenBranchImg from '../../../public/greenBranch.svg'
 import redBranchImg from '../../../public/redBranch.svg'
@@ -199,6 +200,7 @@ const BranchDom = ({ color, isReversal, title }) => {
         textStyle: `${styles['text-accent-primary-green']}`,
         contextDom: (
           <div className={styles['english-box']}>
+            <img className={styles['et-box']} src={et3DResource.src} />
             <img className={styles['english-img-logo']} src={englishLogo.src} />
             <img className={styles['english-img']} src={english.src} />
           </div>
