@@ -1,5 +1,4 @@
-'use client'
-import ThreeDCelestialBody from '@/components/3d-celestial-body-beta'
+import ThreeDCelestialBody from '@/components/3d-celestial-body'
 export default function Home() {
   return (
     <>
