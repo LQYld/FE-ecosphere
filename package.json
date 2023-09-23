@@ -10,7 +10,7 @@
     "lint:fix": "eslint --ext .js,.ts,.jsx,.tsx --fix && npm run stylelint:fix && npm run format",
     "stylelint": "stylelint \"./**/*.{css,less,html}\"",
     "stylelint:fix": "stylelint \"./**/*.{css,less,vue,html}\" --fix",
-    "format": "prettier --write \"./**/*.{html,ts,js,json,md}\"",
+    "format": "prettier --write \"./**/*.{html,ts,js,json,md,tsx,jsx}\"",
     "prepare": "husky install",
     "test": "jest test --passWithNoTests --coverage",
     "ci": "npm run lint && npm run stylelint && npm run test"
