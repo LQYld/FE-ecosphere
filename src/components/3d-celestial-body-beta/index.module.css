@@ -199,6 +199,7 @@
 
 .poster-show-demo-img{
   width: 660px;
+  cursor: pointer;
 }
 
 .poster-show-demo-img-current{ animation: bottom 0.8s 0.3s both;}
