@@ -65,7 +65,14 @@ const projectMap = [
 ]
 
 const ShowDemoDom = ({ url, link }) => {
-  return <img onClick={() => window.open(link)} key={url} src={url} className={styles['poster-show-demo-img']} />
+  return (
+    <img
+      onClick={() => window.open(link)}
+      key={url}
+      src={url}
+      className={styles['poster-show-demo-img']}
+    />
+  )
 }
 
 const show_demo = [
@@ -75,15 +82,20 @@ const show_demo = [
       'vscode Doli Dark Theme is a stylish, modern theme designed to increase development efficiency. It uses a dark background and bright text to make code more legible.',
     url: vsCodeThemeDemo.src,
     key: 'vscode-theme',
-    dom: ShowDemoDom({ url: vsCodeThemeDemo.src, link: 'https://marketplace.visualstudio.com/items?itemName=LQYld.doli-theme' })
+    dom: ShowDemoDom({
+      url: vsCodeThemeDemo.src,
+      link: 'https://marketplace.visualstudio.com/items?itemName=LQYld.doli-theme'
+    })
   },
   {
     name: 'AntfuViteConf 2023 Slidev theme',
-    introduce:
-      `A reproduce the ppt style of antfu's speech at viteConf2023 theme for Slidev. Add the following frontmatter to your slides.md. Start Slidev then it will prompt you to install the theme automatically.`,
+    introduce: `A reproduce the ppt style of antfu's speech at viteConf2023 theme for Slidev. Add the following frontmatter to your slides.md. Start Slidev then it will prompt you to install the theme automatically.`,
     url: slidevAntfuViteConf2023Demo.src,
     key: 'slidev-antfuViteConf-2023',
-    dom: ShowDemoDom({ url: slidevAntfuViteConf2023Demo.src, link: 'https://slidev-theme-antfu-vite-conf-2023.fe-ecosphere.com/1' })
+    dom: ShowDemoDom({
+      url: slidevAntfuViteConf2023Demo.src,
+      link: 'https://slidev-theme-antfu-vite-conf-2023.fe-ecosphere.com/1'
+    })
   },
   {
     name: 'FFCDocs',
@@ -91,7 +103,10 @@ const show_demo = [
       'Intuitve comparison of syntactic sugar. Easy · Intuitive · Low starting point, helping developers easily select the appropriate framework',
     url: ffcDemo.src,
     key: 'ffc',
-    dom: ShowDemoDom({ url: ffcDemo.src, link: 'https://ffc.fe-ecosphere.com/' })
+    dom: ShowDemoDom({
+      url: ffcDemo.src,
+      link: 'https://ffc.fe-ecosphere.com/'
+    })
   },
   {
     name: 'FEIQs',
@@ -99,7 +114,10 @@ const show_demo = [
       'Helping job seekers prepare for FE interviews. Html · Css · Js · Ts · FW',
     url: feiqsDemo.src,
     key: 'feiqs',
-    dom: ShowDemoDom({ url: feiqsDemo.src, link: 'https://feiqs.fe-ecosphere.com/' })
+    dom: ShowDemoDom({
+      url: feiqsDemo.src,
+      link: 'https://feiqs.fe-ecosphere.com/'
+    })
   }
 ]
 
